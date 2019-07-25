@@ -9,23 +9,23 @@ class Post < ActiveRecord::Base
   def title_validation
     if self.title
       words = self.title
-      @word_list = words.split(' ')
+      word_list = words.split(' ')
 
-      case @word_list
-      when @word_list.include?("Won't")
+      case word_list
+      when word_list.include?("Won't")
         true
-      when @word_list.include?("Believe")
+      when word_list.include?("Believe")
         true
-      when @word_list.include?("Secret")
+      when word_list.include?("Secret")
         true
-      when @word_list.include?("Top")
+      when word_list.include?("Top")
         true
-      when @word_list.include?("Guess")
+      when word_list.include?("Guess")
         true
       else
         false
       end
-
+      
     end
   end
   
