@@ -3,29 +3,16 @@ class Post < ActiveRecord::Base
   validates :content, length: {minimum: 250}
   validates :summary, length: {maximum: 250}
   validates :category, inclusion: {in: %w(Fiction Non-Fiction)}
-  validate :title_validation
+  validate :title_validator
 
   private
-  def title_validation
+  def title_validator
     if self.title
       words = self.title
       word_list = words.split(' ')
-
-      case word_list
-      when word_list.include?("Won't")
-        true
-      when word_list.include?("Believe")
-        true
-      when word_list.include?("Secret")
-        true
-      when word_list.include?("Top")
-        true
-      when word_list.include?("Guess")
-        true
-      else
-        false
+      if word_list.none?("Won't")
+        errors.add(:title, "1st error")
       end
-      
     end
   end
   
