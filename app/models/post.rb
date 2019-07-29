@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
       words = self.title
       word_list = words.split(' ')
       if word_list.none?("Won't")
-        errors.add(:title, "1st error")
+        errors.add(:title, "must be clickbait")
       end
     end
   end
