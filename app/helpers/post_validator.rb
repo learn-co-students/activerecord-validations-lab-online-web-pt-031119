@@ -8,7 +8,7 @@ class PostValidator < ActiveModel::EachValidator
     private
         def clickbait?(title)
             if title
-                title =~ /Top\s\d+/ || ["Won't Believe", "Secret", "Guess"].any? {|w| title.include?(w)}
+                title =~ /Top\s\d+/ || ["Won't Believe", "Secret", "Guess"].any? {|s| title.include?(s)}
             end
         end
 end
