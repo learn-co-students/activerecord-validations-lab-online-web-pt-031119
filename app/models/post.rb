@@ -9,7 +9,9 @@ class Post < ActiveRecord::Base
 	validate :title_contains_this
 
 	def title_contains_this
-		["Won't Believe", "Secret", "Top[number]", "Guess"].any? { |s| self.title.include? s}
+		if self.title
+			["Won't Believe", "Secret", "Top[number]", "Guess"].any? { |s| self.title.include? s}
+		end
 	end
 
 end
