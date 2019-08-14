@@ -10,7 +10,10 @@ class Post < ActiveRecord::Base
 
 	def title_contains_this
 		if self.title
-			["Won't Believe", "Secret", "Top[number]", "Guess"].any? { |s| self.title.include? s}
+			if ["Won't Believe", "Secret", "Top[number]", "Guess"].any? { |s| self.title.include? s}
+			else
+				errors.add(:title, "The given title is not in the list.")
+			end
 		end
 	end
 
